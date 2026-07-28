@@ -5,6 +5,13 @@ from app.core.database import init_db
 from app.api import auth, billing, scraper, generator
 from app.api import outreach
 app.include_router(outreach.router, prefix=settings.API_V1_STR)
+# Insert this within your backend/app/main.py configuration blocks
+from app.api import analytics
+from app.core.database import engine
+
+# Register metadata schema tracking maps
+analytics.Base.metadata.create_all(bind=engine)
+app.include_router(analytics.router, prefix=settings.API_V1_STR)
 
 # Initialize FastAPI Engine
 app = FastAPI(
