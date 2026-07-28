@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ brand_name }} | Portfolio</title>
+    <style>
+        :root { --accent: {{ primary_color }}; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #000000; color: #ffffff; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        .wrapper { padding: 4rem 10%; }
+        nav { display: flex; justify-content: space-between; font-weight: 900; letter-spacing: 2px; }
+        .hero { margin-top: 10rem; max-width: 800px; }
+        h1 { font-size: 5rem; line-height: 0.9; text-transform: uppercase; margin-bottom: 2rem; font-weight: 900; }
+        .highlight { color: var(--accent); }
+        p { font-size: 1.5rem; color: #a3a3a3; margin-bottom: 3rem; }
+        .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 5rem; }
+        .card { background: #171717; height: 300px; border-radius: 0px; border: 1px solid #262626; transition: border 0.3s; }
+        .card:hover { border-color: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav>
+            <div>// {{ brand_name }}</div>
+            <div>[ CAPE TOWN STUDIO ]</div>
+        </nav>
+        <section class="hero">
+            <h1>We design <span class="highlight">unforgettable</span> digital artifacts.</h1>
+            <p>{{ tagline }}</p>
+        </section>
+        <div class="work-grid">
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+    </div>
+</body>
+</html>
