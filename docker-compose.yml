@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DEFAULT_CURRENCY=ZAR
+      - DATABASE_URL=sqlite:///./studio_workspace.db
+    volumes:
+      - studio_data:/tmp/studio_outputs
+
+  frontend:
+    image: node:18-slim
+    WORKDIR: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    command: sh -c "npm install && npm start"
+    depends_on:
+      - backend
+
+volumes:
+  studio_data:
