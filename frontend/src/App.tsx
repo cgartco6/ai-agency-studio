@@ -157,3 +157,32 @@ function App() {
 }
 
 export default App;
+
+// 1. Add this custom Telemetry Intercept Tracker inside your main App component:
+const trackInteraction = async (elementId: string) => {
+  if (!activeWorkspaceId) return;
+  try {
+    await fetch(`${API_BASE}/analytics/log-click`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        workspace_id: activeWorkspaceId,
+        element_id: elementId
+      })
+    });
+  } catch (err) {
+    console.warn("Telemetry offline:", err);
+  }
+};
+
+// 2. Wrap actions inside your components like this example:
+<button 
+  onClick={() => {
+    trackInteraction("scraper_pipeline_trigger");
+    triggerScraper();
+  }} 
+  disabled={loading} 
+  style={{ width: '100%', backgroundColor: '#2563eb', color: '#fff', padding: '12px', borderRadius: '6px', fontWeight: 600, border: 'none', cursor: 'pointer', marginBottom: '1.5rem' }}
+>
+  {loading ? 'Executing Real-Time Targeting Optimization...' : 'Run Scraper Pipeline'}
+</button>
