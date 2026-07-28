@@ -1,0 +1,11 @@
+<svg xmlns="http://w3.org" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="gradientZAR" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="url(#gradientZAR)"/>
+  <path d="M160 140 H352 V200 L240 340 H352 V400 H160 V340 L272 200 H160 Z" fill="#ffffff" />
+  <circle cx="380" cy="130" r="25" fill="#10b981"/>
+</svg>
